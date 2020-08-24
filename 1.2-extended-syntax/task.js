@@ -1,15 +1,16 @@
 "use strict"
 
-function getResult(a,b,c){
+function getResult(a,b,c) {
     let x = [];
-    let D = Math.pow(b, 2) - 4*a*c;
+    let D = Math.pow(b, 2) - 4 * a * c;
     if (D < 0)
         x = [];
-    if (D > 0)
-        x.push((Math.sqrt(D) - b) / 2*a)
-        x.push((- Math.sqrt(D) - b) / 2*a);
+    if (D > 0) {
+    x.push((Math.sqrt(D) - b) / 2 * a)
+    x.push((-Math.sqrt(D) - b) / 2 * a)
+    }
     if (D === 0)
-        x.push(-b / 2*a);
+        x.push(-b / (2*a));
     return x;
 }
 
@@ -21,7 +22,7 @@ function getAverageMark(marks){
     let averageMark;
     let mark;
     let sumOfMarks = 0;
-    let newMarks = marks.slice(0, 4)
+    let newMarks = marks.slice(0, 5)
     for (mark of newMarks) {
         sumOfMarks += mark
     }
@@ -32,13 +33,12 @@ function getAverageMark(marks){
 
 function askDrink(name,dateOfBirthday){
     let yearOfBirth = dateOfBirthday.getFullYear();
-    let today = new Date();
-    let currentYear = today.getFullYear();
+    let currentYear = new Date().getFullYear();
     let message;
     if ((currentYear - yearOfBirth) >= 18)
-        message = `Не желаете ли олд-фэшн, ${name}?`
-    else message = `Сожалею, ${name}, но я не могу вам продать алкоголь. 
-        Зато могу предложить вам замечательный клюквенный компот!`
+        message = `Не желаете ли олд-фэшн, ${name}?`;
+    else
+        message = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
     return message
 
 }
