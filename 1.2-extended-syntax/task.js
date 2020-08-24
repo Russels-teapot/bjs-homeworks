@@ -3,8 +3,6 @@
 function getResult(a,b,c) {
     let x = [];
     let D = Math.pow(b, 2) - 4 * a * c;
-    if (D < 0)
-        x = [];
     if (D > 0) {
     x.push((Math.sqrt(D) - b) / 2 * a)
     x.push((-Math.sqrt(D) - b) / 2 * a)
