@@ -46,12 +46,36 @@ function getAverageMark (marks) {
     else return sumOfMarks/marks.length
 };
 
-getAverageMark([3, 5, 4, 2, 3]);
-
 function getAverageScore (data) {
-    let arrOfAverageMarks = {}
+    let averageScore = {};
     for (let subj in data) {
-        let value = getAverageMark(data[subj])
+        averageScore[subj] = Math.round(getAverageMark(data[subj]));
     }
+    let totalMarks = Object.values(averageScore);
+    let sumOfAvgMarks = 0
+    for (mark of totalMarks) {
+        sumOfAvgMarks += mark
+    };
+    averageScore.average = Math.round(sumOfAvgMarks/Object.values(averageScore).length);
+    if (Object.values(data).length === 0) {
+        return 0}
+    else return averageScore;
+};
 
-};  
+function getDecodedValue(secret) {
+    if(secret === 001)
+        return "Родриго";
+    if(secret === 002)
+        return "Эмильо";
+}
+
+function getPersonData(secretData) {
+    let decodedData = {};
+    for (let subj in secretData) {
+        decodedData[subj] = getDecodedValue(secretData[subj]);
+
+    }
+    secretData["aaa"] = decodedData["firstName"];
+    secretData["bbb"] = decodedData["lastName"]
+    return decodedData
+}
